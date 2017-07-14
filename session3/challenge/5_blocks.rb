@@ -81,6 +81,8 @@ def spiral_access(array2d, &block)
          y_dir = 0
        end
     end
+
     t += 1
+    
   end
 end
