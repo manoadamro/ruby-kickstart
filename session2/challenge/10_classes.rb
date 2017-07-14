@@ -16,4 +16,17 @@
 #
 
 class Person
+
+  attr_accessor :age, :name
+  @age = 0
+  @name = ""
+
+  def initialize(name, age)
+    self.name = name
+    self.age = age
+  end
+
+  def birthday()
+    self.age += 1
+  end
 end

@@ -7,5 +7,6 @@
 
 class String
   def every_other_char
+    self == "" ? "" : self.chars.each_slice(2).collect {|pair| pair.first }.join("")
   end
 end
