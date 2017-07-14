@@ -8,3 +8,10 @@
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
+def staircase(n)
+  h = {}
+  (0..n).select { |i| i%2 != 0 }.each do |o|
+    h[o] = (0..o).select{|j| j%2 == 0 if j != 0}
+  end
+  return h
+end
