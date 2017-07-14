@@ -19,15 +19,42 @@
 # Then make a public method called print_song that outputs all stanzas from the number of bottles of beer down to zero.
 # Add any additional methods you find helpful.
 
+require "to_words"
+
 class BeerSong
 
+  attr_accessor :beer
+  @beer = 0
+
   def initialize(beer)
-    if beer > 99 then beer = 99
-    elsif beer < 0 then beer = 0 end
-    self.beer = beer
+    if beer > 99 then self.beer = 99
+    elsif beer < 0 then self.beer = 0
+    else self.beer = beer end
   end
 
   def print_song()
-    puts ""
+    if self.beer > 0 then
+      self.beer.downto 1 do |n|
+        print_stanza n
+      end
+    else
+      return String.new
+    end
+  end
+
+  def get_words(n)
+    return n.to_words.capitalize.tr(" ", "-")
+  end
+
+  def get_plural(n)
+    return (n != 1) ? "bottles" : "bottle"
+  end
+
+  def print_stanza(n)
+    bottle = (n != 1) ? "bottles" : "bottle"
+    puts "#{get_words(n)} #{get_plural(n)} of beer on the wall," +
+    "\n#{get_words(n)} #{get_plural(n)} of beer,\n" +
+    "Take one down, pass it around,\n" +
+    "#{get_words(n-1)} #{get_plural(n-1)} of beer on the wall."
   end
 end
