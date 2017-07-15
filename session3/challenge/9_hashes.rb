@@ -29,4 +29,17 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+
+  u = (a | b)
+
+  h = {}
+  d = []
+  u.each do |n|
+    x = [a.include?(n) ? true : nil, b.include?(n) ? true : nil]
+    if x[0] && x[1] then d.push n end
+    h[n] = x
+  end
+  return h, d.sort
 end
+
+# puts shared([1, 2, 3], [1, 2, 4])
