@@ -30,5 +30,6 @@
 # end
 
 
-def array_init
+def array_init length=5, &block
+  return (block_given?) ? Array.new(length) { |i| block.call(i) } : Array.new(length) {|i| (i *= 100).to_s}
 end
