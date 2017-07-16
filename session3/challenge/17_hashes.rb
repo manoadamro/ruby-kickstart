@@ -7,3 +7,8 @@
 #
 # print_list_in_reverse head   # >> "1\n2\n"
 
+def print_list_in_reverse(llist)
+  if llist == nil then return end
+  if llist[:next] != nil then print_list_in_reverse(llist[:next]) end
+  puts llist[:data]
+end
